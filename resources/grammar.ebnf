@@ -1,0 +1,7 @@
+<cmd> = quit | endgame | startgame | endscene | startscene
+quit = <( "q" | "quit" ) (<SPACE> <#".*">)*>
+startgame = <("start"|"begin") <SPACE> "game">
+startscene = <("start"|"begin") <SPACE> "scene">
+endgame = <("end"|"finish") <SPACE> "game">
+endscene = <("end"|"finish") <SPACE> "scene">
+SPACE = #"\s+"

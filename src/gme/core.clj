@@ -1,6 +1,8 @@
 (ns gme.core
   (:gen-class)
-  (:require [clojure.string :as s]))
+  (:require [clojure.java.io :as io]
+            [clojure.string :as s]
+            [instaparse.core :as i]))
 
 {"Impossible" 0
  "Somewhat likely" 1
@@ -197,5 +199,23 @@ Things that can happen:
 - end a game
 "
 
+(defn parse-input [input]
+  (let [parser (-> "grammar.ebnf"
+                   io/resource
+                   slurp
+                   i/parser)]
+    (parser input)))
+
 ;;(-main)
 
+[(parse-input "quit")
+ (parse-input "q")
+ (parse-input "quit now")
+ (parse-input "end game")
+ (parse-input "finish game")
+ (parse-input "start game")
+ (parse-input "begin game")
+ (parse-input "end scene")
+ (parse-input "finish scene")
+ (parse-input "start scene")
+ (parse-input "begin scene") ]
